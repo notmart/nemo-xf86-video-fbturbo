@@ -1,0 +1,36 @@
+Name: xf86-video-fbturbo
+Summary: Xorg fbturbo video driver
+Description: |
+  Xorg DDX driver for the devices based on Allwinner A10/A13 SoC.
+Version: 0.2.0
+Release: 1
+Group: System/X11
+License: MIT
+URL: https://github.com/ssvb/xf86-video-fbturbo 
+Sources:
+    - "%{name}-%{version}.tar.bz2"
+    - "99-mali-devices.rules"
+PkgBR:
+    - sunxi-mali-devel
+PkgConfigBR:
+    - xorg-macros
+    - xorg-server
+    - xproto
+    - fontsproto
+    - xf86driproto
+    - xext
+    - udev
+Configure: reconfigure
+Builder: make
+Files:
+    - "%{_libdir}/xorg/modules/drivers/fbturbo_drv.so"
+    - "%{_datadir}/man/man4/fbturbo.4.gz"
+    - "%{_sysconfdir}/udev/rules.d/99-mali-devices.rules"
+SubPackages:
+    - Name: example-xorg-conf
+      Summary: Example fbturbo Xorg config
+      Group: System/X11
+      Description: |
+          Xorg config example for fbturbo
+      Files:
+          - "%{_sysconfdir}/X11/xorg.conf.d/99-mali400.conf"

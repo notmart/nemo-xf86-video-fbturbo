@@ -1,0 +1,3 @@
+[submodule "xf86-video-fbturbo"]
+	path = xf86-video-fbturbo
+	url = https://github.com/ssvb/xf86-video-fbturbo.git
